@@ -1,11 +1,22 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+date_default_timezone_set('America/Bogota'); // Aseguramos hora de Colombia
+
+// --- MANTENER SESIÓN ABIERTA POR 1 AÑO ---
+$tiempo_vida = 31536000;
+$ruta_sesiones = __DIR__ . '/mis_sesiones_privadas';
+if (!file_exists($ruta_sesiones)) { mkdir($ruta_sesiones, 0777, true); }
+session_save_path($ruta_sesiones);
+session_set_cookie_params($tiempo_vida);
+ini_set('session.gc_maxlifetime', $tiempo_vida);
+ini_set('session.cookie_lifetime', $tiempo_vida);
 
 session_start();
+// -----------------------------------------
+
 require_once 'db_connection.php';
 
-// Si ya tiene sesión iniciada, mandarlo a metas.php
 if (isset($_SESSION['meta_user_id'])) {
     header("Location: metas.php");
     exit();
@@ -14,19 +25,30 @@ if (isset($_SESSION['meta_user_id'])) {
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user = $conn->real_escape_string($_POST['usuario']);
+    $user = trim($_POST['usuario']);
     $pass = $_POST['password'];
 
-    $sql = "SELECT * FROM usuarios_metas WHERE usuario = '$user' LIMIT 1";
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM usuarios_metas WHERE usuario = ? LIMIT 1");
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result && $result->num_rows > 0) {
         $u = $result->fetch_assoc();
         
         if (password_verify($pass, $u['password'])) {
-            // Seteamos variables exclusivas para la carpeta /metricas/
             $_SESSION['meta_user_id'] = $u['id'];
             $_SESSION['meta_user_name'] = $u['nombre'];
+            $_SESSION['meta_user_rol'] = $u['rol'] ?? 'user';
+
+            // --- NUEVO: REGISTRO DE LOGIN EN LA BITÁCORA ---
+            $fecha_login = date('Y-m-d H:i:s');
+            $accion = "Inició Sesión";
+            $detalle = "Acceso exitoso al panel.";
+            $stmt_log = $conn->prepare("INSERT INTO bitacora_actividad (usuario, accion, detalle, fecha) VALUES (?, ?, ?, ?)");
+            $stmt_log->bind_param("ssss", $u['nombre'], $accion, $detalle, $fecha_login);
+            $stmt_log->execute();
+            // -----------------------------------------------
 
             header("Location: metas.php");
             exit();
@@ -67,10 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" name="usuario" class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" required autofocus>
                 </div>
                 <div>
-                    <div class="flex justify-between items-center mb-2">
-                        <label class="block text-xs font-bold text-gray-500 uppercase">Contraseña</label>
-                        <a href="restablecer.php" class="text-xs font-semibold text-blue-600">¿Olvidaste tu clave?</a>
-                    </div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Contraseña</label>
                     <input type="password" name="password" class="w-full border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" required>
                 </div>
                 <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg transition-all">Iniciar Sesión</button>

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "metricas-drive",
+  "private_key_id": "48fde00ffbf97c66958ce2b604fd31c45ae1bb7d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDMavTtNfi38QuI\nPvZgQRxy6Rr0toQ2sy1om2gJmZBtkYWD065OVxrcF04vlpEPnjeQ7R+J2QGveQGb\nxUqDC5O75lVzFfbusGrzg0ksGRSbJGoKoMz0wUFnMy5t4s5VwkUBjSGwZDdnAzJO\njbvwpInQfpIWqM8MWgBxDXb+gxTh6T82IwOiWo9NDZ+UI5ciuhsF4d3eFVjiOQ5q\nTb5Dla/1FMnNVrhmmxHCT7sPw3I9bLFMmlncwBqBpUykox0FmHNfApJ6vA8YbNEl\ngwYh7NpqZNQtGedfJF/tCGz7yM8Sh4ECqgfJ2Br+/XcMAyFsGXu99jZix2Yo+9nc\n/lwIVlilAgMBAAECggEABMXBD/2Q8jMD2I3U57f2lUkThPapn2oqySlc0hiOYCrI\nhUksZbKLV+utX0UykjzYwfo6sun7B06sJHDyF+Zty1blQfc8GUimtW+6mGVUE+bl\nqy6ReCLSEHDRGuXPCv6GMg6TiSKDjp4Pjx2D3UXGt+s0kvFJSVnk3FEfX99gAoHl\n0HzcYU5Hr54y6mJeeOZjqFsJbpoWcWrC5CClwHoac/86HYMIBV+LcHpaMA1SSVvE\nqxYSKVlW7hSSMxe64RyH0f0yC/3hunEpsrDyRnb3V8J6/bf/PGGKh03JBNML5FD5\nrSXzs8xTw6Q9PvArGutXLSIx/fmSrYvBreoRO/KOsQKBgQDrzSEnInENTLHmB5BC\n/yQbtcH1XbcwiMfhffFJ537kwC0M0aYxtJWKuVnysQl4xfMSyPHnb/IQPSev0XPd\n5oEfLePm97ctbol8/9el1kw3MXNeploFkCYAop/HOPfBUF5vnAoV2dHdHsiQKvib\nb0zJpElaOgHq0wbT6j3XUaItmQKBgQDd7Z7xKKTT0oKST/kE1fC09h0lsNA7uJKl\nazagUXP8jxqzsXZClFAJaljNz83jRIf92+Mh13RTbq1YbS79AwJ5WxnDm/wGYeDR\nyZBNEcG51/GJYRsxx8npN8jboRSNUkAoh3HBh87EZnZdIJkshTpjjSqM5XoeKKBc\nfe05yoRy7QKBgQCn2Joyuydx6hfvv46Gwgq31sc7mvvdBmAROI7apngC6HCo4UrF\nst+HoaxPPomZeH4v7u2SanMJ8B4h3pv1ZjCfOxEwxT+UjUw8t/iOyV3zI7YVt5/4\nucTzSs8lBn4FEupF0/Kx3xyto03soUnZin5EQjccjJH0z0Xa7rAaZrdkcQKBgQC7\ncuhsM3M9QzJsWMYxsm60uqiV3EmWF+ktdWhXc1UvfsQEASGtTM5plXzaoen6Szk+\nT8sCG5Syn+okpVwp8q/VRwB0+zydO3EEYWbT4eqqiV4HNpEcs+60YRzzfZP5Zf6w\n/O41k/suYokZUd5u/zz5NxQ4m99Qt+nzFZ4Y0RicZQKBgDk8SaXvSn2OUwxsvC9u\nluBil2J63OG8wbtqBKVkzQisUmyy8iGq+XflRPPFjoXdF2FT4r8EK3aw6A4XTzmw\n2QqpTjW5NUrpOtm58t33EzpZZT4xcXJDbw0IrrA+MxpOFUCKWjdVHnDERINU36e5\nnAs/x67fX2YcyuMxTh6FXaTy\n-----END PRIVATE KEY-----\n",
+  "client_email": "bot-archivos@metricas-drive.iam.gserviceaccount.com",
+  "client_id": "103827649671874860168",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bot-archivos%40metricas-drive.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
